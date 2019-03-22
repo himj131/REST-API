@@ -1,6 +1,7 @@
 package me.star.springrestapi.events;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import me.star.springrestapi.common.TestDescription;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,6 +43,7 @@ public class EventControllerTest {
 //    EventRepository eventRepository
 
     @Test
+    @TestDescription("정상적으로 이벤트를 생성하는 테스트")
     public void createEvent() throws Exception {
 
         //주어진 요청 만들기
@@ -80,6 +82,7 @@ public class EventControllerTest {
     }
 
     @Test
+    @TestDescription("입력 받을수 없는 값을 사용한 경우 에러 발생 테스트")
     public void createEvent_Bad_Reqeust() throws Exception {
 
         //주어진 요청 만들기
@@ -112,6 +115,7 @@ public class EventControllerTest {
     }
 
     @Test
+    @TestDescription("입력 값이 비어있는 경우에 에러가 발생 하는 테스트")
     public void createEvent_Bad_Reqeust_Empty_Input() throws Exception {
         EventDto eventDto = EventDto.builder().build();
 
@@ -124,6 +128,7 @@ public class EventControllerTest {
 
     //max가 base값보다 작을때, 끝날이 시작날보다 이를때 등.
     @Test
+    @TestDescription("입력 값이 잘못된 경우에 에러가 발생 하는 테스트")
     public void createEvent_Bad_Reqeust_Wrong_Input() throws Exception {
         EventDto eventDto = EventDto.builder()
                 .name("Spring")
