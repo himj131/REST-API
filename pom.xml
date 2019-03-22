@@ -41,6 +41,13 @@
             <optional>true</optional> <!-- 이 프로젝트를 참조하는 다른프로젝트에 이 의존성을 추가시키지 않는다는 옵션 -->
         </dependency>
 
+        <!-- DTO -> 도메인 객체로 값 복사할때 유용함 -->
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
