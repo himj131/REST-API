@@ -84,9 +84,9 @@ public class EventControllerTest {
 
         //테스트할 동작
         mockMvc.perform(post("/api/events/")
-                    .contentType(MediaType.APPLICATION_JSON_UTF8)
-                    .accept(MediaTypes.HAL_JSON)
-                    .content(objectMapper.writeValueAsString(event)))
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .accept(MediaTypes.HAL_JSON)
+                .content(objectMapper.writeValueAsString(event)))
                 .andDo(print())
                 .andExpect(status().isCreated())//201=created 응답 isCreated() = is(201)
                 .andExpect(jsonPath("id").exists())  //id값이 나오는지 확인
@@ -146,7 +146,7 @@ public class EventControllerTest {
                                 fieldWithPath("offline").description("it thells is this event is offline or not"),
                                 fieldWithPath("eventStatus").description("event status")
                         )
-               ));
+                ));
     }
 
     @Test
@@ -232,10 +232,10 @@ public class EventControllerTest {
 
         //When
         this.mockMvc.perform(get("/api/events")
-                    .param("page", "1")
-                    .param("size", "10")
-                    .param("sort", "name,DESC")
-                    )
+                .param("page", "1")
+                .param("size", "10")
+                .param("sort", "name,DESC")
+        )
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("page").exists())
@@ -243,7 +243,7 @@ public class EventControllerTest {
                 .andExpect(jsonPath("_links.self").exists())
                 .andExpect(jsonPath("_links.profile").exists())
                 .andDo(document("query-events"))
-                ;
+        ;
     }
 
     @Test
@@ -260,7 +260,7 @@ public class EventControllerTest {
                 .andExpect(jsonPath("_links.self").exists())
                 .andExpect(jsonPath("_links.profile").exists())
                 .andDo(document("get-an-event"))
-            ;
+        ;
     }
 
     @Test
@@ -270,7 +270,7 @@ public class EventControllerTest {
         //When & Then
         this.mockMvc.perform(get("/api/events/23424"))
                 .andExpect(status().isNotFound())
-                ;
+        ;
     }
 
     private Event generateEvent(int index) {
